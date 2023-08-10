@@ -46,8 +46,13 @@ class MyHomePage extends HookConsumerWidget {
             style: Theme.of(context).textTheme.headlineMedium,
           ),
           ElevatedButton(
-              onPressed: () => counterInstance.navigateTo('/profile'),
-              child: Text('Go to profile'))
+            onPressed: () => counterInstance.navigateTo('/profile'),
+            child: Text('Go to profile'),
+          ),
+          ElevatedButton(
+            onPressed: () => counterInstance.showalert(),
+            child: Text('Show Alert'),
+          )
         ],
       )),
       floatingActionButton: FloatingActionButton(
@@ -56,4 +61,24 @@ class MyHomePage extends HookConsumerWidget {
       ),
     );
   }
+}
+
+void showAlert(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Alert'),
+        content: Text('This is an alert message.'),
+        actions: <Widget>[
+          TextButton(
+            child: Text('OK'),
+            onPressed: () {
+              Navigator.of(context).pop(); // Close the dialog
+            },
+          ),
+        ],
+      );
+    },
+  );
 }
