@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpodlearn1/Pages/HomePage.dart';
-import 'package:riverpodlearn1/Profile.dart';
-
+import 'package:riverpodlearn1/provider/auth.dart';
 import 'package:riverpodlearn1/services/navigatorService.dart';
+import 'package:riverpodlearn1/stacks/UserStack.dart';
+import 'package:riverpodlearn1/stacks/publicStack.dart';
 
 void main() {
   runApp(
@@ -16,13 +16,7 @@ void main() {
 class MyApp extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialApp(
-      navigatorKey: ref.read(navigationServiceProvider).navigatorKey,
-      home: MyHomePage(),
-      routes: {
-        '/home': (context) => MyHomePage(),
-        '/profile': (context) => MyProfilepage()
-      },
-    );
+    final authState = ref.watch(AuthenticationProvider);
+    return MaterialApp(home: authState ? UserStack() : AuthStack());
   }
 }

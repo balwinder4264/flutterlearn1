@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "82628243400",
+    "project_id": "market-f1378",
+    "storage_bucket": "market-f1378.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82628243400:android:d2d372480c36eb09aa1afd",
+        "android_client_info": {
+          "package_name": "com.example.market"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "82628243400-0bfgnqjsmqjt0m5551ef4fpqk08bvijt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMMKGXMbBYbfQ65SWKT-tyvVM2B4IRqYA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "82628243400-0bfgnqjsmqjt0m5551ef4fpqk08bvijt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "82628243400-jntvv9pvdfog11p4d9ubqmg7dgojcmdb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.riverpodlearn1"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82628243400:android:f87505442a16f583aa1afd",
+        "android_client_info": {
+          "package_name": "com.example.riverpodlearn1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "82628243400-0bfgnqjsmqjt0m5551ef4fpqk08bvijt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMMKGXMbBYbfQ65SWKT-tyvVM2B4IRqYA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "82628243400-0bfgnqjsmqjt0m5551ef4fpqk08bvijt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "82628243400-jntvv9pvdfog11p4d9ubqmg7dgojcmdb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.riverpodlearn1"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

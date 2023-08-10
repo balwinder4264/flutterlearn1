@@ -20,6 +20,7 @@ class NavigationService {
 
   NavigationService._internal();
   Future<void> navigateTo(String screenName) {
+    print(screenName);
     return navigatorKey.currentState!.pushNamed(screenName);
   }
 
