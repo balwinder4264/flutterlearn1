@@ -7,12 +7,12 @@ import 'package:riverpodlearn1/provider/counter_notifier.dart';
 import 'package:riverpodlearn1/services/navigatorService.dart';
 
 class MyProfilepage extends HookConsumerWidget {
-  final routeName = '/profile';
+  static final routeName = '/profile';
   const MyProfilepage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final authState = ref.watch(AuthenticationProvider.notifier);
+    final authState = ref.watch(authNotifierProvider.notifier);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Prfile'),

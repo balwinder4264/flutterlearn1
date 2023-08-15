@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpodlearn1/services/navigatorService.dart';
 
 class MyHomePage extends HookConsumerWidget {
-  final routeName = '/home';
+  static final routeName = '/home';
   const MyHomePage({Key? key}) : super(key: key);
 
   @override
