@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpodlearn1/Pages/home/index.dart';
 import 'package:riverpodlearn1/Pages/profile/Profile.dart';
 import 'package:riverpodlearn1/provider/tabRouter.dart';
-import 'package:riverpodlearn1/services/navigatorService.dart';
 
 class UserStack extends HookConsumerWidget {
   // final ProfileStack({super.key});
@@ -15,10 +13,11 @@ class UserStack extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final selectedIndex = useState(0);
-    final selectedIndex = ref.watch(selectedIndexProvider);
+    final selectedIndex = ref.watch(tabIndexProvider).selectedIndexProvider;
+    final tabInstance = ref.read(tabIndexProvider.notifier);
+
     void onItemTapped(int index) {
-      ref.read(selectedIndexProvider.notifier).state = index;
+      tabInstance.setIndex(index);
     }
 
     return Scaffold(
