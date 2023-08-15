@@ -8,7 +8,6 @@ class AuthStack extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Navigator(
-      key: globalNavigationService.navigatorKey,
       initialRoute: '/auth',
       onGenerateRoute: (settings) {
         switch (settings.name) {

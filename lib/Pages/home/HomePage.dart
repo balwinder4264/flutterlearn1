@@ -13,6 +13,9 @@ class MyHomePage extends HookConsumerWidget {
     final counterInstance = ref.watch(counterProvider.notifier);
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Home'),
+      ),
       body: Center(
           child: Column(
         children: [
