@@ -24,7 +24,7 @@ class MyHomePage extends HookConsumerWidget {
             style: Theme.of(context).textTheme.headlineMedium,
           ),
           ElevatedButton(
-            onPressed: () => globalNavigationService.navigateTo('/profile'),
+            onPressed: () => globalNavigationService.navigateTo('/profile',globalNavigationService.homeNavigatorKey),
             child: Text('Go to profile'),
           ),
           ElevatedButton(

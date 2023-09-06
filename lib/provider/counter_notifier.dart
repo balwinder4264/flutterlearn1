@@ -10,9 +10,9 @@ class Counter extends StateNotifier<int> {
 
   void increment() => state++;
   void decremnent() => state--;
-  void navigateTo(screnname) => globalNavigationService.navigateTo(screnname);
+  void navigateTo(screnname) => globalNavigationService.navigateTo(screnname, globalNavigationService.homeNavigatorKey);
   void showalert() => {
         // add codd here
-        globalNavigationService.showAlert('Alert', 'API call failed.')
+        globalNavigationService.showAlert('Alert', 'API call failed.', globalNavigationService.homeNavigatorKey)
       };
 }

@@ -5,13 +5,11 @@ final navigationServiceProvider = Provider<NavigationService>((ref) {
   return NavigationService();
 });
 
-final navigatorProvider = Provider.family<void, String>((ref, routeName) {
-  final navigationService = ref.read(navigationServiceProvider);
-  navigationService.navigateTo(routeName);
-});
 
 class NavigationService {
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> homeNavigatorKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> favoriteNavigatorKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> addPostNavigatorKey = GlobalKey<NavigatorState>();
   static final NavigationService _instance = NavigationService._internal();
 
   factory NavigationService() {
@@ -19,13 +17,13 @@ class NavigationService {
   }
 
   NavigationService._internal();
-  Future<void> navigateTo(String screenName) {
-    return navigatorKey.currentState!.pushNamed(screenName);
+  Future<void> navigateTo(String screenName,GlobalKey<NavigatorState> key) {
+    return key.currentState!.pushNamed(screenName);
   }
 
-  void showAlert(String title, String message) {
+  void showAlert(String title, String message,GlobalKey<NavigatorState> key) {
     showDialog(
-      context: navigatorKey
+      context: key
           .currentContext!, // Use the current context from the navigator key
       builder: (context) => AlertDialog(
         title: Text(title),
