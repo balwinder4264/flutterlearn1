@@ -11,7 +11,7 @@ class MainInboxPage extends HookConsumerWidget {
     return Scaffold(
       body: Navigator(
         initialRoute: '/',
-        key: globalNavigationService.addPostNavigatorKey,
+        key: globalNavigationService.inboxNavigatorKey,
         onGenerateRoute: (RouteSettings settings) {
           WidgetBuilder builder;
           switch (settings.name) {

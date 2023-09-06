@@ -10,6 +10,7 @@ class NavigationService {
   final GlobalKey<NavigatorState> homeNavigatorKey = GlobalKey<NavigatorState>();
   final GlobalKey<NavigatorState> favoriteNavigatorKey = GlobalKey<NavigatorState>();
   final GlobalKey<NavigatorState> addPostNavigatorKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> inboxNavigatorKey = GlobalKey<NavigatorState>();
   static final NavigationService _instance = NavigationService._internal();
 
   factory NavigationService() {
