@@ -13,8 +13,6 @@ class AuthState {
   });
 }
 
-final container = ProviderContainer();
-
 class AuthNotifier extends StateNotifier<AuthState> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final ProviderContainer _container;

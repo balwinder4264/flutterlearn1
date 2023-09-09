@@ -8,13 +8,10 @@ final counterProvider = StateNotifierProvider<Counter, int>((ref) {
 class Counter extends StateNotifier<int> {
     final ProviderContainer _container;
   Counter(this._container) : super(0);
-  
-
   void increment() => state++;
   void decremnent() => state--;
   void navigateTo(screnname) =>_container.read(navigationServiceProvider).navigateTo(screnname);
   void showalert() => {
-        // add codd here
         _container.read(navigationServiceProvider).showAlert('Alert', 'API call failed.')
       };
 }
