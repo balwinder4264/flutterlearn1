@@ -17,7 +17,6 @@ class NavigationService {
 
   GlobalKey<NavigatorState> get currentNavigatorKey {
     final currentTabIndex = ref.read(tabIndexProvider).selectedIndexProvider;
-    print("currentTabIndex: ${currentTabIndex}");
     switch (currentTabIndex) {
       case 0:
         return homeNavigatorKey;
