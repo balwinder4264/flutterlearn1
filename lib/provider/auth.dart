@@ -50,7 +50,6 @@ class AuthNotifier extends StateNotifier<AuthState> {
     await FirebaseAuth.instance.signOut();
     final selectedIndexController = _container.read(tabIndexProvider.notifier);
     selectedIndexController.setIndex(0);
-    // selectedIndexController.state = 0;
   }
 }
 
