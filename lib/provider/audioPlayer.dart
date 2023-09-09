@@ -3,12 +3,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:spotify_sdk/spotify_sdk.dart';
 
-final spotifyProvider = Provider<SpotifySdk>((ref) => SpotifySdk());
-
-// spotify_state.dart
-
-
-
 enum PlaybackState {
   playing,
   paused,
