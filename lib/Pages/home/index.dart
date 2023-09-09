@@ -12,14 +12,14 @@ class MainHomePage extends HookConsumerWidget {
     return Scaffold(
       body: Navigator(
         initialRoute: '/',
-        key: globalNavigationService.homeNavigatorKey,
+        key:ref.read(navigationServiceProvider).homeNavigatorKey,
         onGenerateRoute: (RouteSettings settings) {
           WidgetBuilder builder;
           switch (settings.name) {
             case '/':
               builder = (BuildContext context) => MyHomePage();
               break;
-            case '/profile':
+            case MyProfilepage.routeName:
               builder = (BuildContext context) => MyProfilepage();
               break;
             default:

@@ -10,7 +10,7 @@ class MainAddPostPage extends HookConsumerWidget {
     return Scaffold(
       body: Navigator(
         initialRoute: '/',
-        key: globalNavigationService.addPostNavigatorKey,
+        key:ref.read(navigationServiceProvider).addPostNavigatorKey, 
         onGenerateRoute: (RouteSettings settings) {
           WidgetBuilder builder;
           switch (settings.name) {

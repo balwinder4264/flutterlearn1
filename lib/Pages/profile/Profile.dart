@@ -7,7 +7,7 @@ import 'package:riverpodlearn1/provider/counter_notifier.dart';
 import 'package:riverpodlearn1/services/navigatorService.dart';
 
 class MyProfilepage extends HookConsumerWidget {
-  static final routeName = '/profile';
+  static const routeName = '/profile';
   const MyProfilepage({Key? key}) : super(key: key);
 
   @override

@@ -1,3 +1,4 @@
+import 'package:riverpodlearn1/Pages/inbox/ChatPage.dart';
 import 'package:riverpodlearn1/provider/counter_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -23,10 +24,19 @@ class MyInboxPage extends HookConsumerWidget {
             'My Inbox page  && & ',
             style: Theme.of(context).textTheme.headlineMedium,
           ),
-         
+          ElevatedButton(
+            onPressed: () =>
+            ref.read(navigationServiceProvider).navigateTo(ChatPage.routeName),
+            child: Text(
+              'Go to Chat Page',
+              style: TextStyle(color: Colors.white),
+            ),
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.blue),
+            ),
+          ),
         ],
       )),
-     
     );
   }
 }

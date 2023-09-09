@@ -13,7 +13,7 @@ class MainFavoritePage extends HookConsumerWidget {
     return Scaffold(
       body: Navigator(
         initialRoute: '/',
-        key: globalNavigationService.favoriteNavigatorKey,
+        key:ref.read(navigationServiceProvider).favoriteNavigatorKey,
         onGenerateRoute: (RouteSettings settings) {
           WidgetBuilder builder;
           switch (settings.name) {

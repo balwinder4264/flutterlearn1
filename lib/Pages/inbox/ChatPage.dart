@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpodlearn1/services/navigatorService.dart';
 
-class MyAddPostPage extends HookConsumerWidget {
-  static const routeName = '/addPost';
-  const MyAddPostPage({Key? key}) : super(key: key);
+class ChatPage extends HookConsumerWidget {
+  static const routeName = '/chat';
+  const ChatPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -14,13 +14,13 @@ class MyAddPostPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Add Post'),
+        title: Text('Chat page'),
       ),
       body: Center(
           child: Column(
         children: [
           Text(
-            'This is my MyAddPost Page ',
+            'My Chat page  && & ',
             style: Theme.of(context).textTheme.headlineMedium,
           ),
          

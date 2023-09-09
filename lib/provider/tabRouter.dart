@@ -8,7 +8,8 @@ class TabState {
 }
 
 class TabStateNotifier extends StateNotifier<TabState> {
-  TabStateNotifier() : super(TabState(selectedIndexProvider: 0));
+    final ProviderContainer _container;
+  TabStateNotifier(this._container) : super(TabState(selectedIndexProvider: 0));
   void setIndex(int index) {
     state = TabState(selectedIndexProvider: index);
   }
@@ -17,4 +18,4 @@ class TabStateNotifier extends StateNotifier<TabState> {
 final selectedIndexProvider = StateProvider<int>((ref) => 0);
 
 final tabIndexProvider = StateNotifierProvider<TabStateNotifier, TabState>(
-    (ref) => TabStateNotifier());
+    (ref) => TabStateNotifier(ref.container));

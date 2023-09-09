@@ -1,3 +1,4 @@
+import 'package:riverpodlearn1/Pages/profile/Profile.dart';
 import 'package:riverpodlearn1/provider/counter_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -24,7 +25,7 @@ class MyHomePage extends HookConsumerWidget {
             style: Theme.of(context).textTheme.headlineMedium,
           ),
           ElevatedButton(
-            onPressed: () => globalNavigationService.navigateTo('/profile'),
+            onPressed: () =>ref.read(navigationServiceProvider).navigateTo(MyProfilepage.routeName),
             child: Text('Go to profile'),
           ),
           ElevatedButton(

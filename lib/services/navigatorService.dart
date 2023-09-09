@@ -2,17 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpodlearn1/provider/tabRouter.dart';
 
+final navigationServiceProvider = Provider<NavigationService>((ref) {
+  return NavigationService(ref);
+});
 
 class NavigationService {
+  final ProviderRef ref;
   final GlobalKey<NavigatorState> homeNavigatorKey = GlobalKey<NavigatorState>();
   final GlobalKey<NavigatorState> favoriteNavigatorKey = GlobalKey<NavigatorState>();
   final GlobalKey<NavigatorState> addPostNavigatorKey = GlobalKey<NavigatorState>();
   final GlobalKey<NavigatorState> inboxNavigatorKey = GlobalKey<NavigatorState>();
-  static final NavigationService _instance = NavigationService._internal();
-  late ProviderContainer container; // I
 
- GlobalKey<NavigatorState> get currentNavigatorKey {
-    final currentTabIndex = container.read(tabIndexProvider).selectedIndexProvider;
+  NavigationService(this.ref);
+
+  GlobalKey<NavigatorState> get currentNavigatorKey {
+    final currentTabIndex = ref.read(tabIndexProvider).selectedIndexProvider;
+    print("currentTabIndex: ${currentTabIndex}");
     switch (currentTabIndex) {
       case 0:
         return homeNavigatorKey;
@@ -26,19 +31,14 @@ class NavigationService {
         return homeNavigatorKey;
     }
   }
-  factory NavigationService() {
-    return _instance;
-  }
 
-  NavigationService._internal(): container = ProviderContainer();
   Future<void> navigateTo(String screenName) {
     return currentNavigatorKey.currentState!.pushNamed(screenName);
   }
 
   void showAlert(String title, String message) {
     showDialog(
-      context: currentNavigatorKey
-          .currentContext!, // Use the current context from the navigator key
+      context: currentNavigatorKey.currentContext!,
       builder: (context) => AlertDialog(
         title: Text(title),
         content: Text(message),
@@ -52,5 +52,3 @@ class NavigationService {
     );
   }
 }
-
-final globalNavigationService = NavigationService();
