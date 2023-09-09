@@ -15,7 +15,5 @@ class TabStateNotifier extends StateNotifier<TabState> {
   }
 }
 
-final selectedIndexProvider = StateProvider<int>((ref) => 0);
-
 final tabIndexProvider = StateNotifierProvider<TabStateNotifier, TabState>(
     (ref) => TabStateNotifier(ref.container));
