@@ -10,7 +10,6 @@ class Counter extends StateNotifier<int> {
   Counter(this._container) : super(0);
   void increment() => state++;
   void decremnent() => state--;
-  void navigateTo(screnname) =>_container.read(navigationServiceProvider).navigateTo(screnname);
   void showalert() => {
         _container.read(navigationServiceProvider).showAlert('Alert', 'API call failed.')
       };
