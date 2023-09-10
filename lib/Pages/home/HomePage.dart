@@ -2,7 +2,7 @@ import 'package:riverpodlearn1/Pages/profile/Profile.dart';
 import 'package:riverpodlearn1/provider/counter_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpodlearn1/services/navigatorService.dart';
+import 'package:riverpodlearn1/Pages/home/widgets/ProductList.dart';
 
 class MyHomePage extends HookConsumerWidget {
   static final routeName = '/home';
@@ -17,23 +17,7 @@ class MyHomePage extends HookConsumerWidget {
       appBar: AppBar(
         title: Text('Home'),
       ),
-      body: Center(
-          child: Column(
-        children: [
-          Text(
-            '$count',
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
-          ElevatedButton(
-            onPressed: () =>ref.read(navigationServiceProvider).navigateTo(MyProfilepage.routeName),
-            child: Text('Go to profile'),
-          ),
-          ElevatedButton(
-            onPressed: () => counterInstance.showalert(),
-            child: Text('Show Alert'),
-          )
-        ],
-      )),
+      body:  ProductListView(),
       floatingActionButton: FloatingActionButton(
         onPressed: () => counterInstance.increment(),
         child: const Icon(Icons.add),
