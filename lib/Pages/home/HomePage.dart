@@ -1,4 +1,5 @@
 import 'package:riverpodlearn1/Pages/profile/Profile.dart';
+import 'package:riverpodlearn1/provider/auth.dart';
 import 'package:riverpodlearn1/provider/counter_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -10,6 +11,8 @@ class MyHomePage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final authState = ref.watch(authNotifierProvider.notifier);
+
     final count = ref.watch(counterProvider);
     final counterInstance = ref.watch(counterProvider.notifier);
 
@@ -17,7 +20,7 @@ class MyHomePage extends HookConsumerWidget {
       appBar: AppBar(
         title: Text('Home'),
       ),
-      body:  ProductListView(),
+      body: ProductListView(),
       floatingActionButton: FloatingActionButton(
         onPressed: () => counterInstance.increment(),
         child: const Icon(Icons.add),

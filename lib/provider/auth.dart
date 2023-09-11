@@ -51,6 +51,18 @@ class AuthNotifier extends StateNotifier<AuthState> {
     final selectedIndexController = _container.read(tabIndexProvider.notifier);
     selectedIndexController.setIndex(0);
   }
+
+  Future<String?> getFirebaseToken() async {
+    User? user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      final tokenResult = await user.getIdTokenResult();
+      print("token  ==>${tokenResult.token}");
+      return tokenResult.token;
+    }
+
+    return null;
+  }
 }
 
 final authNotifierProvider = StateNotifierProvider<AuthNotifier, AuthState>(

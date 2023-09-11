@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 class CustomCard extends StatelessWidget {
   final String text;
-  final String imageUrl;
+  final String? imageUrl;
   final String subtitle;
 
   CustomCard(this.text, this.imageUrl, this.subtitle, {Key? key})
@@ -29,7 +29,7 @@ class CustomCard extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Image.network(imageUrl, height: 70, fit: BoxFit.cover),
+            // Image.network(imageUrl, height: 70, fit: BoxFit.cover),
             Spacer(),
             Text(text,
                 textAlign: TextAlign.center,
