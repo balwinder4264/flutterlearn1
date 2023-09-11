@@ -33,9 +33,9 @@ class ProductListView extends HookConsumerWidget {
         itemBuilder: (context, index) {
           final product = productsState.products[index];
           return CustomCard(
-            product.name ?? 'No name',
-            product.imageUrls?[0] ?? 'No name',
-            product.description ?? 'No description',
+            product.name,
+            product.image_urls[0],
+            product.description,
           );
         },
       ),

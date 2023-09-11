@@ -12,8 +12,8 @@ ProductResponse _$ProductResponseFromJson(Map<String, dynamic> json) =>
       count: json['count'] as int,
       page: json['page'] as int,
       success: json['success'] as int,
-      data: (json['data'] as List<dynamic>?)
-          ?.map((e) => Product.fromJson(e as Map<String, dynamic>))
+      data: (json['data'] as List<dynamic>)
+          .map((e) => Product.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -27,23 +27,22 @@ Map<String, dynamic> _$ProductResponseToJson(ProductResponse instance) =>
     };
 
 Product _$ProductFromJson(Map<String, dynamic> json) => Product(
-      id: json['id'] as String?,
-      name: json['name'] as String?,
-      description: json['description'] as String?,
-      price: (json['price'] as num?)?.toDouble(),
-      status: json['status'] as String?,
-      imageUrls: (json['imageUrls'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      categoryId: json['categoryId'] as String?,
-      creator: json['creator'] as String?,
-      createdAt: json['createdAt'] == null
-          ? null
-          : DateTime.parse(json['createdAt'] as String),
-      updatedAt: json['updatedAt'] == null
-          ? null
-          : DateTime.parse(json['updatedAt'] as String),
+      id: json['id'] as String? ?? '',
+      name: json['name'] as String? ?? '',
+      description: json['description'] as String? ?? '',
+      price: (json['price'] as num?)?.toDouble() ?? 0.0,
+      status: json['status'] as String? ?? '',
+      image_urls: (json['image_urls'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      tags:
+          (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+              const [],
+      categoryId: json['categoryId'] as String? ?? '',
+      creator: json['creator'] as String? ?? '',
+      createdAt: json['createdAt'] as String? ?? "2000, 1, 1",
+      updatedAt: json['updatedAt'] as String? ?? "2000, 1, 1",
     );
 
 Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
@@ -52,10 +51,10 @@ Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'description': instance.description,
       'price': instance.price,
       'status': instance.status,
-      'imageUrls': instance.imageUrls,
+      'image_urls': instance.image_urls,
       'tags': instance.tags,
       'categoryId': instance.categoryId,
       'creator': instance.creator,
-      'createdAt': instance.createdAt?.toIso8601String(),
-      'updatedAt': instance.updatedAt?.toIso8601String(),
+      'createdAt': instance.createdAt,
+      'updatedAt': instance.updatedAt,
     };
