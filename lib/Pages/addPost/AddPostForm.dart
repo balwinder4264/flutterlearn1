@@ -20,8 +20,7 @@ class AddPostForm extends HookConsumerWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Center(
-            child: Container(
+       SingleChildScrollView(child:  Container(
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.8),
@@ -94,7 +93,7 @@ class AddPostForm extends HookConsumerWidget {
                 ),
               ),
             ),
-          ),
+       )
         ],
       ),
     );

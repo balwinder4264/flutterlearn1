@@ -15,7 +15,7 @@ class CustomTextField extends StatelessWidget {
     this.icon,
     this.obscureText = false,
     this.validator,
-    this.maxLines,
+    this.maxLines=1,
     this.keyboardType = TextInputType.text,
   });
 

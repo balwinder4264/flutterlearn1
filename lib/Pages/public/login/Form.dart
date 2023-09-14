@@ -81,6 +81,7 @@ class LoginForm extends HookConsumerWidget {
                         }
                       },
                     ),
+                        SizedBox(height: 20),
                     CustomButton(
                       buttonText: 'Register up ?',
                       onPressed: () {
