@@ -9,26 +9,24 @@ import 'package:riverpodlearn1/services/navigatorService.dart';
 class MainInboxPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return AuthOrScreen(
-      screen: Scaffold(
-        body: Navigator(
-          initialRoute: '/',
-          key: ref.read(navigationServiceProvider).inboxNavigatorKey,
-          onGenerateRoute: (RouteSettings settings) {
-            WidgetBuilder builder;
-            switch (settings.name) {
-              case '/':
-                builder = (BuildContext context) => MyInboxPage();
-                break;
-              case ChatPage.routeName:
-                builder = (BuildContext context) => ChatPage();
-                break;
-              default:
-                throw Exception('Invalid route: ${settings.name}');
-            }
-            return MaterialPageRoute(builder: builder, settings: settings);
-          },
-        ),
+    return Scaffold(
+      body: Navigator(
+        initialRoute: '/',
+        key: ref.read(navigationServiceProvider).inboxNavigatorKey,
+        onGenerateRoute: (RouteSettings settings) {
+          WidgetBuilder builder;
+          switch (settings.name) {
+            case '/':
+              builder = (BuildContext context) => MyInboxPage();
+              break;
+            case ChatPage.routeName:
+              builder = (BuildContext context) => ChatPage();
+              break;
+            default:
+              throw Exception('Invalid route: ${settings.name}');
+          }
+          return MaterialPageRoute(builder: builder, settings: settings);
+        },
       ),
     );
   }

@@ -21,10 +21,7 @@ class MyHomePage extends HookConsumerWidget {
         title: Text('Home'),
       ),
       body: ProductListView(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => counterInstance.increment(),
-        child: const Icon(Icons.add),
-      ),
+      
     );
   }
 }

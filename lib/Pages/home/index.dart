@@ -10,24 +10,24 @@ class MainHomePage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      body: Navigator(
-        initialRoute: '/',
+        body: Navigator(
+          initialRoute: '/',
         key:ref.read(navigationServiceProvider).homeNavigatorKey,
-        onGenerateRoute: (RouteSettings settings) {
-          WidgetBuilder builder;
-          switch (settings.name) {
-            case '/':
-              builder = (BuildContext context) => MyHomePage();
-              break;
-            case MyProfilepage.routeName:
-              builder = (BuildContext context) => MyProfilepage();
-              break;
-            default:
-              throw Exception('Invalid route: ${settings.name}');
-          }
-          return MaterialPageRoute(builder: builder, settings: settings);
-        },
-      ),
+          onGenerateRoute: (RouteSettings settings) {
+            WidgetBuilder builder;
+            switch (settings.name) {
+              case '/':
+                builder = (BuildContext context) => MyHomePage();
+                break;
+              case MyProfilepage.routeName:
+                builder = (BuildContext context) => MyProfilepage();
+                break;
+              default:
+                throw Exception('Invalid route: ${settings.name}');
+            }
+            return MaterialPageRoute(builder: builder, settings: settings);
+          },
+        ),
     );
   }
 }

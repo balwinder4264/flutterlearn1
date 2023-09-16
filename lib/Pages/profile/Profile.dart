@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpodlearn1/Pages/AuthOrScreen.dart';
 import 'package:riverpodlearn1/provider/auth.dart';
 
-import 'package:riverpodlearn1/provider/counter_notifier.dart';
-import 'package:riverpodlearn1/services/navigatorService.dart';
 
 class MyProfilepage extends HookConsumerWidget {
   static const routeName = '/profile';
@@ -13,7 +11,8 @@ class MyProfilepage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final authState = ref.watch(authNotifierProvider.notifier);
-    return Scaffold(
+    return AuthOrScreen(
+        screen: Scaffold(
       appBar: AppBar(
         title: const Text('Prfile'),
       ),
@@ -30,6 +29,6 @@ class MyProfilepage extends HookConsumerWidget {
           )
         ],
       )),
-    );
+    ));
   }
 }

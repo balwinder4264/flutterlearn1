@@ -1,4 +1,5 @@
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:riverpodlearn1/Pages/AuthOrScreen.dart';
 import 'package:riverpodlearn1/Pages/Favorite/FavoritePage.dart';
 import 'package:riverpodlearn1/Pages/profile/Profile.dart';
 import 'package:riverpodlearn1/Pages/home/HomePage.dart';
@@ -13,7 +14,7 @@ class MainFavoritePage extends HookConsumerWidget {
     return Scaffold(
       body: Navigator(
         initialRoute: '/',
-        key:ref.read(navigationServiceProvider).favoriteNavigatorKey,
+        key: ref.read(navigationServiceProvider).favoriteNavigatorKey,
         onGenerateRoute: (RouteSettings settings) {
           WidgetBuilder builder;
           switch (settings.name) {

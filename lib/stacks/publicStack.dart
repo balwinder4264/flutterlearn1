@@ -9,7 +9,6 @@ class AuthStack extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-        key: ref.read(navigationServiceProvider).publicNavigatorKey,
         appBar: AppBar(
           title: Text('Auth Stack'),
         ),
