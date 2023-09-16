@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpodlearn1/Pages/public/login/LoginPage.dart';
+import 'package:riverpodlearn1/Pages/public/register/registerPage.dart';
 import 'package:riverpodlearn1/services/authService.dart';
 import 'package:riverpodlearn1/services/navigatorService.dart';
 import 'package:riverpodlearn1/stacks/UserStack.dart';
@@ -25,19 +27,12 @@ class MyApp extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
-        home: StreamBuilder(
-      stream: AuthService().userStream,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return LoadingWidget();
-        } else if (snapshot.hasError) {
-          return Text('Something went wrong');
-        } else if (snapshot.hasData) {
-          return UserStack();
-        } else {
-          return AuthStack();
-        }
+      home: UserStack(),
+      routes: {
+        LoginScreen.routeName: (context) => LoginScreen(),
+        RegiterScreen.routeName: (context) => RegiterScreen(),
+        // Add other routes as required
       },
-    ));
+    );
   }
 }

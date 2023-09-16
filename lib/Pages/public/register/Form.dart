@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpodlearn1/Pages/public/register/registerPage.dart';
+import 'package:riverpodlearn1/Pages/public/login/LoginPage.dart';
 import 'package:riverpodlearn1/provider/auth.dart';
-import 'package:riverpodlearn1/services/navigatorService.dart';
 import 'package:riverpodlearn1/widgets/customTextFiled.dart';
 import 'package:riverpodlearn1/widgets/custombutton.dart';
 import 'package:email_validator/email_validator.dart';
 
-class LoginForm extends HookConsumerWidget {
+class RegisterForm extends HookConsumerWidget {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -34,7 +33,7 @@ class LoginForm extends HookConsumerWidget {
                 children: [
                   SizedBox(height: 20),
                   Text(
-                    'Login',
+                    'Register',
                     style: TextStyle(fontSize: 20),
                     textAlign: TextAlign.center,
                   ),
@@ -72,7 +71,7 @@ class LoginForm extends HookConsumerWidget {
                         )
                       : SizedBox.shrink(),
                   CustomButton(
-                    buttonText: 'Login',
+                    buttonText: 'Register',
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         auth.login(
@@ -85,10 +84,10 @@ class LoginForm extends HookConsumerWidget {
                   ),
                   SizedBox(height: 20),
                   CustomButton(
-                    buttonText: 'Register up ?',
+                    buttonText: 'Already have accoutn?',
                     onPressed: () {
-                       Navigator.of(context).pop();
-                      Navigator.of(context).pushNamed(RegiterScreen.routeName);
+                      Navigator.of(context).pop();
+                      Navigator.pushNamed(context, LoginScreen.routeName);
                     },
                   )
                 ],

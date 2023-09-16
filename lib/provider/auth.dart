@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpodlearn1/provider/tabRouter.dart';
 import 'package:riverpodlearn1/services/navigatorService.dart';
@@ -27,9 +28,10 @@ class AuthNotifier extends StateNotifier<AuthState> {
     });
   }
 
-  Future<void> login({required String email, required String password}) async {
+  Future<void> login({required String email, required String password,required BuildContext context}) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
+     Navigator.of(context).pop();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         _setErrorMessage('No user found for that email.');

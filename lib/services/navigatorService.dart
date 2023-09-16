@@ -8,10 +8,16 @@ final navigationServiceProvider = Provider<NavigationService>((ref) {
 
 class NavigationService {
   final ProviderRef ref;
-  final GlobalKey<NavigatorState> homeNavigatorKey = GlobalKey<NavigatorState>();
-  final GlobalKey<NavigatorState> favoriteNavigatorKey = GlobalKey<NavigatorState>();
-  final GlobalKey<NavigatorState> addPostNavigatorKey = GlobalKey<NavigatorState>();
-  final GlobalKey<NavigatorState> inboxNavigatorKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> homeNavigatorKey =
+      GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> favoriteNavigatorKey =
+      GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> addPostNavigatorKey =
+      GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> inboxNavigatorKey =
+      GlobalKey<NavigatorState>();
+    final GlobalKey<NavigatorState> publicNavigatorKey =
+      GlobalKey<NavigatorState>();
 
   NavigationService(this.ref);
 
@@ -33,6 +39,10 @@ class NavigationService {
 
   Future<void> navigateTo(String screenName) {
     return currentNavigatorKey.currentState!.pushNamed(screenName);
+  }
+
+  void pop() {
+   return currentNavigatorKey.currentState!.pop();
   }
 
   void showAlert(String title, String message) {
