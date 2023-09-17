@@ -14,3 +14,4 @@ class _ProductsEndpoints {
 }
 
 
+final productStatuses = ['active', 'inactive'];
