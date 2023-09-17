@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpodlearn1/services/navigatorService.dart';
 
 class MyInboxPage extends HookConsumerWidget {
-  static final routeName = '/inbox';
+  static const routeName = '/inbox';
   const MyInboxPage({Key? key}) : super(key: key);
 
   @override
@@ -17,7 +17,7 @@ class MyInboxPage extends HookConsumerWidget {
     return AuthOrScreen(
         screen: Scaffold(
       appBar: AppBar(
-        title: Text('My Inbox page'),
+        title: const Text('My Inbox page'),
       ),
       body: Center(
           child: Column(
@@ -30,12 +30,12 @@ class MyInboxPage extends HookConsumerWidget {
             onPressed: () => ref
                 .read(navigationServiceProvider)
                 .navigateTo(ChatPage.routeName),
-            child: Text(
-              'Go to Chat Page',
-              style: TextStyle(color: Colors.white),
-            ),
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(Colors.blue),
+            ),
+            child: const Text(
+              'Go to Chat Page',
+              style: TextStyle(color: Colors.white),
             ),
           ),
         ],

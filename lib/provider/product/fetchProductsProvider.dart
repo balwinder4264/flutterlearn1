@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpodlearn1/services/apiService.dart';
@@ -38,14 +37,14 @@ class ProductsNotifier extends StateNotifier<ProductsState> {
           .get('${API.products.get}?page=${state.currentPage + 1}');
       final productResponse = ProductResponse.fromJson(response);
 
-      if (productResponse.data!.isEmpty) {
+      if (productResponse.data.isEmpty) {
         state = ProductsState(
             products: state.products,
             hasMore: false,
             currentPage: state.currentPage + 1);
       } else {
         state = ProductsState(
-            products: [...state.products, ...productResponse?.data ?? []],
+            products: [...state.products, ...productResponse.data ?? []],
             hasMore: true,
             currentPage: state.currentPage + 1);
       }

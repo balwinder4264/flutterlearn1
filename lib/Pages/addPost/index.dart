@@ -5,6 +5,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpodlearn1/services/navigatorService.dart';
 
 class MainAddPostPage extends HookConsumerWidget {
+  const MainAddPostPage({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AuthOrScreen(
@@ -16,7 +18,7 @@ class MainAddPostPage extends HookConsumerWidget {
             WidgetBuilder builder;
             switch (settings.name) {
               case '/':
-                builder = (BuildContext context) => MyAddPostPage();
+                builder = (BuildContext context) => const MyAddPostPage();
                 break;
               default:
                 throw Exception('Invalid route: ${settings.name}');

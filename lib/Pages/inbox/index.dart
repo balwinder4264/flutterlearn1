@@ -1,5 +1,3 @@
-import 'package:riverpodlearn1/Pages/AuthOrScreen.dart';
-import 'package:riverpodlearn1/Pages/addPost/MyAddPostPage.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpodlearn1/Pages/inbox/ChatPage.dart';
@@ -7,6 +5,8 @@ import 'package:riverpodlearn1/Pages/inbox/MyInboxPage.dart';
 import 'package:riverpodlearn1/services/navigatorService.dart';
 
 class MainInboxPage extends HookConsumerWidget {
+  const MainInboxPage({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
@@ -17,10 +17,10 @@ class MainInboxPage extends HookConsumerWidget {
           WidgetBuilder builder;
           switch (settings.name) {
             case '/':
-              builder = (BuildContext context) => MyInboxPage();
+              builder = (BuildContext context) => const MyInboxPage();
               break;
             case ChatPage.routeName:
-              builder = (BuildContext context) => ChatPage();
+              builder = (BuildContext context) => const ChatPage();
               break;
             default:
               throw Exception('Invalid route: ${settings.name}');

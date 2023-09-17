@@ -10,6 +10,8 @@ import 'package:email_validator/email_validator.dart';
 class RegisterForm extends HookConsumerWidget {
   final _formKey = GlobalKey<FormState>();
 
+  RegisterForm({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final emailController = useTextEditingController(text: "test@gmail.com");
@@ -20,7 +22,7 @@ class RegisterForm extends HookConsumerWidget {
       children: [
         Center(
           child: Container(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: Colors.white.withOpacity(0.8),
               borderRadius: BorderRadius.circular(10),
@@ -31,13 +33,13 @@ class RegisterForm extends HookConsumerWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  SizedBox(height: 20),
-                  Text(
+                  const SizedBox(height: 20),
+                  const Text(
                     'Register',
                     style: TextStyle(fontSize: 20),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   CustomTextField(
                     controller: emailController,
                     hintText: 'Email',
@@ -51,7 +53,7 @@ class RegisterForm extends HookConsumerWidget {
                       return null;
                     },
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   CustomTextField(
                     controller: passwordController,
                     hintText: 'Password',
@@ -63,13 +65,13 @@ class RegisterForm extends HookConsumerWidget {
                       return null;
                     },
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   authState.errorMessage.length > 1
                       ? Text(
                           authState.errorMessage,
-                          style: TextStyle(color: Colors.red),
+                          style: const TextStyle(color: Colors.red),
                         )
-                      : SizedBox.shrink(),
+                      : const SizedBox.shrink(),
                   CustomButton(
                     buttonText: 'Register',
                     onPressed: () {
@@ -82,7 +84,7 @@ class RegisterForm extends HookConsumerWidget {
                       }
                     },
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   CustomButton(
                     buttonText: 'Already have accoutn?',
                     onPressed: () {

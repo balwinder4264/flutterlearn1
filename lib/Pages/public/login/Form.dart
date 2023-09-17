@@ -3,13 +3,14 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpodlearn1/Pages/public/register/registerPage.dart';
 import 'package:riverpodlearn1/provider/auth.dart';
-import 'package:riverpodlearn1/services/navigatorService.dart';
 import 'package:riverpodlearn1/widgets/customTextFiled.dart';
 import 'package:riverpodlearn1/widgets/custombutton.dart';
 import 'package:email_validator/email_validator.dart';
 
 class LoginForm extends HookConsumerWidget {
   final _formKey = GlobalKey<FormState>();
+
+  LoginForm({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -21,7 +22,7 @@ class LoginForm extends HookConsumerWidget {
       children: [
         Center(
           child: Container(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: Colors.white.withOpacity(0.8),
               borderRadius: BorderRadius.circular(10),
@@ -32,13 +33,13 @@ class LoginForm extends HookConsumerWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  SizedBox(height: 20),
-                  Text(
+                  const SizedBox(height: 20),
+                  const Text(
                     'Login',
                     style: TextStyle(fontSize: 20),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   CustomTextField(
                     controller: emailController,
                     hintText: 'Email',
@@ -52,7 +53,7 @@ class LoginForm extends HookConsumerWidget {
                       return null;
                     },
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   CustomTextField(
                     controller: passwordController,
                     hintText: 'Password',
@@ -64,13 +65,13 @@ class LoginForm extends HookConsumerWidget {
                       return null;
                     },
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   authState.errorMessage.length > 1
                       ? Text(
                           authState.errorMessage,
-                          style: TextStyle(color: Colors.red),
+                          style: const TextStyle(color: Colors.red),
                         )
-                      : SizedBox.shrink(),
+                      : const SizedBox.shrink(),
                   CustomButton(
                     buttonText: 'Login',
                     onPressed: () {
@@ -83,7 +84,7 @@ class LoginForm extends HookConsumerWidget {
                       }
                     },
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   CustomButton(
                     buttonText: 'Register up ?',
                     onPressed: () {

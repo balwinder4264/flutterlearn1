@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpodlearn1/services/apiService.dart';
@@ -28,11 +27,11 @@ class AddProductNotifier extends StateNotifier<AppProductState> {
     if (error is CustomError) {
         print('Error while adding product: ${error.message}');
         state = AppProductState(isLoading: false, errorMessage: error.message);
-        Future.delayed(Duration(seconds: 5), _clearError);
+        Future.delayed(const Duration(seconds: 5), _clearError);
     } else {
         print('Error while adding product: ${error.toString()}');
         state = AppProductState(isLoading: false, errorMessage: error.toString());
-        Future.delayed(Duration(seconds: 5), _clearError);
+        Future.delayed(const Duration(seconds: 5), _clearError);
 }
     }
   }

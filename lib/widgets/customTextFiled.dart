@@ -9,7 +9,7 @@ class CustomTextField extends StatelessWidget {
   final int? maxLines;
   final TextInputType keyboardType;
 
-  const CustomTextField({
+  const CustomTextField({super.key, 
     required this.hintText,
     required this.controller,
     this.icon,
@@ -56,7 +56,7 @@ class CustomTextField extends StatelessWidget {
             style: const TextStyle(fontSize: 14, color: Colors.black),
             decoration: InputDecoration(
               label: Text(hintText),
-              labelStyle: TextStyle(color: primaryColor),
+              labelStyle: const TextStyle(color: primaryColor),
               prefixIcon: icon != null ? Icon(icon) : null,
               filled: true,
               fillColor: accentColor,

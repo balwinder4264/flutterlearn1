@@ -1,10 +1,9 @@
 import 'package:riverpodlearn1/provider/counter_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpodlearn1/services/navigatorService.dart';
 
 class MyFavoritePage extends HookConsumerWidget {
-  static final routeName = '/Favorite';
+  static const routeName = '/Favorite';
   const MyFavoritePage({Key? key}) : super(key: key);
 
   @override
@@ -14,7 +13,7 @@ class MyFavoritePage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favorite'),
+        title: const Text('Favorite'),
       ),
       body: Center(
           child: Column(

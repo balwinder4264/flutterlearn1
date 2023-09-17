@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:riverpodlearn1/Pages/public/login/LoginPage.dart';
 import 'package:riverpodlearn1/Pages/public/register/registerPage.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpodlearn1/services/navigatorService.dart';
 
 class AuthStack extends HookConsumerWidget {
+  const AuthStack({super.key});
+
   @override
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Auth Stack'),
+          title: const Text('Auth Stack'),
         ),
         body: Center(
           child: Column(
@@ -22,11 +23,11 @@ class AuthStack extends HookConsumerWidget {
                     context: context,
                     isScrollControlled: true,
                     builder: (BuildContext context) {
-                      return LoginScreen();
+                      return const LoginScreen();
                     },
                   );
                 },
-                child: Text('Log In'),
+                child: const Text('Log In'),
               ),
               ElevatedButton(
                 onPressed: () {
@@ -35,11 +36,11 @@ class AuthStack extends HookConsumerWidget {
                     context: context,
                     isScrollControlled: true,
                     builder: (BuildContext context) {
-                      return RegiterScreen();
+                      return const RegiterScreen();
                     },
                   );
                 },
-                child: Text('Register'),
+                child: const Text('Register'),
               ),
             ],
           ),

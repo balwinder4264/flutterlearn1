@@ -1,10 +1,8 @@
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
 
 class MyModal extends StatelessWidget {
   final Widget child;
-  MyModal({required this.child});
+  const MyModal({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +25,7 @@ class MyModal extends StatelessWidget {
                     Container(
                       color: Colors.transparent,
                       child: IconButton(
-                        icon: Icon(Icons.close),
+                        icon: const Icon(Icons.close),
                         onPressed: () {
                           Navigator.of(context).pop();
                         },

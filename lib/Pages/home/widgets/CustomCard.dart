@@ -5,7 +5,7 @@ class CustomCard extends StatelessWidget {
   final String imageUrl;
   final String subtitle;
 
-  CustomCard(this.text, this.imageUrl, this.subtitle, {Key? key})
+  const CustomCard(this.text, this.imageUrl, this.subtitle, {Key? key})
       : super(key: key);
 
   @override
@@ -30,26 +30,26 @@ class CustomCard extends StatelessWidget {
         child: Column(
           children: [
             Image.network(imageUrl, height: 70, fit: BoxFit.cover),
-            Spacer(),
+            const Spacer(),
             Text(text,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 )),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Text(
               subtitle,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.grey,
                   fontWeight: FontWeight.normal,
                   fontSize: 12),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
           ],

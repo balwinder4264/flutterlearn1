@@ -1,14 +1,11 @@
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:riverpodlearn1/Pages/AuthOrScreen.dart';
 import 'package:riverpodlearn1/Pages/Favorite/FavoritePage.dart';
-import 'package:riverpodlearn1/Pages/profile/Profile.dart';
-import 'package:riverpodlearn1/Pages/home/HomePage.dart';
-import 'package:riverpodlearn1/provider/counter_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpodlearn1/services/navigatorService.dart';
 
 class MainFavoritePage extends HookConsumerWidget {
+  const MainFavoritePage({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
@@ -19,7 +16,7 @@ class MainFavoritePage extends HookConsumerWidget {
           WidgetBuilder builder;
           switch (settings.name) {
             case '/':
-              builder = (BuildContext context) => MyFavoritePage();
+              builder = (BuildContext context) => const MyFavoritePage();
               break;
             default:
               throw Exception('Invalid route: ${settings.name}');

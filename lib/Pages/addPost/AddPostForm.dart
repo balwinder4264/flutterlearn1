@@ -10,6 +10,8 @@ import 'package:riverpodlearn1/widgets/custombutton.dart';
 class AddPostForm extends HookConsumerWidget {
   final _formKey = GlobalKey<FormState>();
 
+  AddPostForm({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final nameController = useTextEditingController();
@@ -38,7 +40,7 @@ class AddPostForm extends HookConsumerWidget {
         children: [
           SingleChildScrollView(
             child: Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.8),
                 borderRadius: BorderRadius.circular(10),
@@ -52,16 +54,16 @@ class AddPostForm extends HookConsumerWidget {
                        if (addProductState.errorMessage != null)
               Text(
                 addProductState.errorMessage!,
-                style: TextStyle(color: Colors.red),
+                style: const TextStyle(color: Colors.red),
               ),
             
-                    SizedBox(height: 20),
-                    Text(
+                    const SizedBox(height: 20),
+                    const Text(
                       'Add Product',
                       style: TextStyle(fontSize: 20),
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     CustomTextField(
                       controller: nameController,
                       hintText: 'Name',
@@ -72,7 +74,7 @@ class AddPostForm extends HookConsumerWidget {
                         return null;
                       },
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     CustomTextField(
                       controller: descriptionController,
                       maxLines: 4,
@@ -84,7 +86,7 @@ class AddPostForm extends HookConsumerWidget {
                         return null;
                       },
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     CustomTextField(
                       controller: priceController,
                       hintText: 'Price',
@@ -95,13 +97,13 @@ class AddPostForm extends HookConsumerWidget {
                         return null;
                       },
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     authState.errorMessage.length > 1
                         ? Text(
                             authState.errorMessage,
-                            style: TextStyle(color: Colors.red),
+                            style: const TextStyle(color: Colors.red),
                           )
-                        : SizedBox.shrink(),
+                        : const SizedBox.shrink(),
                  CustomButton(
                       buttonText: 'Submit',
                       onPressed: () {

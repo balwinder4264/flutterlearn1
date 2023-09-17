@@ -21,7 +21,7 @@ class ApiService {
         throw Exception('Failed to load data');
       }
     } catch (error) {
-      throw error;
+      rethrow;
     }
   }
 
@@ -47,7 +47,7 @@ class ApiService {
         throw error;
       }
     } catch (error) {
-      throw error;
+      rethrow;
     }
   }
 

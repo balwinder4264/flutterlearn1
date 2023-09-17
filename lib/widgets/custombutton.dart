@@ -4,22 +4,22 @@ class CustomButton extends StatelessWidget {
   final String buttonText;
   final Function() onPressed;
 
-  const CustomButton({
+  const CustomButton({super.key, 
     required this.buttonText,
     required this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 100,
       child: AspectRatio(
         aspectRatio: 75 / 10,
         child: Container(
           decoration: BoxDecoration(boxShadow: [
             BoxShadow(
-                offset: Offset(0, 4),
-                color: Color(0x4960F9).withOpacity(.3),
+                offset: const Offset(0, 4),
+                color: const Color(0x004960f9).withOpacity(.3),
                 spreadRadius: 4,
                 blurRadius: 50)
           ]),
@@ -30,7 +30,7 @@ class CustomButton extends StatelessWidget {
             padding: const EdgeInsets.all(0.0),
             child: Ink(
               decoration: BoxDecoration(
-                image: DecorationImage(
+                image: const DecorationImage(
 
                   image: NetworkImage(
                       "https://firebasestorage.googleapis.com/v0/b/flutterbricks-public.appspot.com/o/finance_app_2%2FbuttonBackgroundSmall.png?alt=media&token=fa2f9bba-120a-4a94-8bc2-f3adc2b58a73"),
@@ -45,7 +45,7 @@ class CustomButton extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Text(
                   buttonText,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.white, fontWeight: FontWeight.w300),
                 ),
               ),

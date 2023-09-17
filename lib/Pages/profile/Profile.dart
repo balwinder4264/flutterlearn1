@@ -25,7 +25,7 @@ class MyProfilepage extends HookConsumerWidget {
           ),
           ElevatedButton(
             onPressed: () => {authState.logout()},
-            child: Text('Logout'),
+            child: const Text('Logout'),
           )
         ],
       )),

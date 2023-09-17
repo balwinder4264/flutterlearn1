@@ -1,7 +1,6 @@
 import 'package:riverpodlearn1/provider/counter_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpodlearn1/services/navigatorService.dart';
 
 class ChatPage extends HookConsumerWidget {
   static const routeName = '/chat';
@@ -14,7 +13,7 @@ class ChatPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chat page'),
+        title: const Text('Chat page'),
       ),
       body: Center(
           child: Column(

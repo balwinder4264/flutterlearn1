@@ -1,7 +1,6 @@
 import 'package:riverpodlearn1/provider/counter_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpodlearn1/services/navigatorService.dart';
 import 'package:riverpodlearn1/Pages/addPost/AddPostForm.dart';
 class MyAddPostPage extends HookConsumerWidget {
   static const routeName = '/addPost';
@@ -14,7 +13,7 @@ class MyAddPostPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Add Post'),
+        title: const Text('My Add Post'),
       ),
       body: AddPostForm(),
      
