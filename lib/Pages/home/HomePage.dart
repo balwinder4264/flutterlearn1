@@ -1,8 +1,11 @@
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:riverpodlearn1/provider/auth.dart';
 import 'package:riverpodlearn1/provider/counter_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpodlearn1/Pages/home/widgets/ProductList.dart';
+import 'package:riverpodlearn1/provider/product/fetchProductsProvider.dart';
+import 'package:riverpodlearn1/provider/tabRouter.dart';
 
 class MyHomePage extends HookConsumerWidget {
   static const routeName = '/home';
@@ -10,17 +13,20 @@ class MyHomePage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final authState = ref.watch(authNotifierProvider.notifier);
+    final selectedIndex = ref.watch(tabIndexProvider).selectedIndexProvider;
 
-    final count = ref.watch(counterProvider);
-    final counterInstance = ref.watch(counterProvider.notifier);
-
+    useEffect(() {
+       print("useftc ${selectedIndex}");
+      if (selectedIndex == 0) {
+        print("useftc inside ${selectedIndex}");
+        ref.read(productsNotifierProvider.notifier).fetchNextPage();
+      }
+    }, [selectedIndex]);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
       ),
       body: const ProductListView(),
-      
     );
   }
 }

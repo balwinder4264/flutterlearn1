@@ -6,7 +6,9 @@ import 'package:riverpodlearn1/services/authService.dart';
 
 final productsNotifierProvider =
     StateNotifierProvider<ProductsNotifier, ProductsState>((ref) {
-  return ProductsNotifier(ref.read(apiServiceProvider));
+  return ProductsNotifier(
+    ref.read(apiServiceProvider),
+  );
 });
 
 class ProductsState {
@@ -27,18 +29,15 @@ class ProductsNotifier extends StateNotifier<ProductsState> {
   final authService = AuthService();
   ProductsNotifier(this.apiService)
       : super(ProductsState(products: [], hasMore: true, currentPage: 0)) {
-    fetchNextPage();
+    // fetchNextPage();
   }
 
   Future<void> fetchNextPage() async {
     if (!state.hasMore) return; // Return if no more pages available
-    final token = await authService.getFirebaseToken();
-
     try {
       final response = await apiService
-          .get('${API.products.get}?page=${state.currentPage + 1}');
+          .get('${API.products.get}?page=${state.currentPage}');
       final productResponse = ProductResponse.fromJson(response);
-
       if (productResponse.data.isEmpty) {
         state = ProductsState(
             products: state.products,
@@ -46,7 +45,9 @@ class ProductsNotifier extends StateNotifier<ProductsState> {
             currentPage: state.currentPage + 1);
       } else {
         state = ProductsState(
-            products: [...state.products, ...productResponse.data ?? []],
+            products: state.currentPage < 2
+                ? productResponse.data
+                : [...state.products, ...productResponse.data ?? []],
             hasMore: true,
             currentPage: state.currentPage + 1);
       }
@@ -59,5 +60,8 @@ class ProductsNotifier extends StateNotifier<ProductsState> {
       // Handle any error, maybe set 'hasMore' to false or show some error message
     }
   }
-  
+
+  void reset() {
+    state = ProductsState(products: [], hasMore: true, currentPage: 0);
+  }
 }
