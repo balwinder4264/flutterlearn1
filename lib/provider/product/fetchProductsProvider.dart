@@ -5,8 +5,6 @@ import 'package:riverpodlearn1/services/apiService.dart';
 import 'package:riverpodlearn1/constant/constant.dart';
 import 'package:riverpodlearn1/models/product.dart';
 
-final apiServiceProvider = Provider<ApiService>((ref) => ApiService());
-
 final productsNotifierProvider =
     StateNotifierProvider<ProductsNotifier, ProductsState>((ref) {
   return ProductsNotifier(ref.read(apiServiceProvider));
@@ -60,4 +58,5 @@ class ProductsNotifier extends StateNotifier<ProductsState> {
       // Handle any error, maybe set 'hasMore' to false or show some error message
     }
   }
+  
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpodlearn1/Pages/home/widgets/CustomCard.dart';
-import 'package:riverpodlearn1/provider/ProductsProvider.dart';
+import 'package:riverpodlearn1/provider/product/fetchProductsProvider.dart';
 
 class ProductListView extends HookConsumerWidget {
   const ProductListView({Key? key}) : super(key: key);

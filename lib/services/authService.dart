@@ -11,4 +11,15 @@ class AuthService {
   logout() {
     FirebaseAuth.instance.signOut();
   }
+
+  Future<String?> getFirebaseToken() async {
+    User? user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      final tokenResult = await user.getIdTokenResult();
+      return tokenResult.token;
+    }
+
+    return null;
+  }
 }

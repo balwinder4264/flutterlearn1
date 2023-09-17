@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpodlearn1/models/product.dart';
 import 'package:riverpodlearn1/provider/auth.dart';
+import 'package:riverpodlearn1/provider/product/addProductProvider.dart';
 import 'package:riverpodlearn1/widgets/customTextFiled.dart';
 import 'package:riverpodlearn1/widgets/custombutton.dart';
 
@@ -13,14 +15,29 @@ class AddPostForm extends HookConsumerWidget {
     final nameController = useTextEditingController();
     final descriptionController = useTextEditingController();
     final priceController = useTextEditingController();
-
     final auth = ref.read(authNotifierProvider.notifier);
     final authState = ref.watch(authNotifierProvider);
+    final addProductState = ref.watch(addProductnProvider);
+    final addProductNotifier = ref.read(addProductnProvider.notifier);
+
+    addProduct() {
+      final newProduct = Product(
+          name: nameController.text,
+          description: descriptionController.text,
+          price: double.parse(priceController
+         
+              .text) ,
+               status: 'Active',// Make sure to handle potential parsing errors
+
+          );
+      addProductNotifier.addProduct(newProduct);
+    }
 
     return Scaffold(
       body: Stack(
         children: [
-       SingleChildScrollView(child:  Container(
+          SingleChildScrollView(
+            child: Container(
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.8),
@@ -32,6 +49,12 @@ class AddPostForm extends HookConsumerWidget {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                       if (addProductState.errorMessage != null)
+              Text(
+                addProductState.errorMessage!,
+                style: TextStyle(color: Colors.red),
+              ),
+            
                     SizedBox(height: 20),
                     Text(
                       'Add Product',
@@ -79,13 +102,11 @@ class AddPostForm extends HookConsumerWidget {
                             style: TextStyle(color: Colors.red),
                           )
                         : SizedBox.shrink(),
-                    CustomButton(
+                 CustomButton(
                       buttonText: 'Submit',
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          // You'll need to decide how you want to use the values
-                          // nameController.text, descriptionController.text, and priceController.text
-                          // in your login logic.
+                          addProduct();
                         }
                       },
                     ),
@@ -93,7 +114,7 @@ class AddPostForm extends HookConsumerWidget {
                 ),
               ),
             ),
-       )
+          )
         ],
       ),
     );

@@ -59,7 +59,6 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
     if (user != null) {
       final tokenResult = await user.getIdTokenResult();
-      print("token  ==>${tokenResult.token}");
       return tokenResult.token;
     }
 
