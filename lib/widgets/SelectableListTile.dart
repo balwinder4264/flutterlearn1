@@ -1,32 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpodlearn1/Pages/addPost/StatusBottomSheet.dart';
 
 class SelectableListTile extends HookConsumerWidget {
   final String title;
   final String? description;
   final String? imgUrl;
-  final String currentSelected;
-  final Function(String) onPressed;
+  final String? currentSelected;
+  final Function(String)? onPressed;
   final double height;
 
   SelectableListTile({
     required this.title,
     this.description,
     this.imgUrl,
-    required this.currentSelected,
-    required this.onPressed,
+    this.currentSelected,
+    this.onPressed,
     this.height = 85,
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
-    final defaultSelected = useState(currentSelected);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final defaultSelected = ref.watch(selectionProvider);
     return GestureDetector(
       onTap: () {
-        defaultSelected.value = title;
-        onPressed(title);
+        ref.read(selectionProvider.notifier).select(title);
+        Navigator.pop(context);
       },
       child: AnimatedContainer(
         height: height,
@@ -37,12 +38,12 @@ class SelectableListTile extends HookConsumerWidget {
             color: Colors.white,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-                color: defaultSelected.value == title
+                color: defaultSelected == title
                     ? Colors.blue
                     : Colors.white.withOpacity(0),
                 width: 2),
             boxShadow: [
-              defaultSelected.value == title
+              defaultSelected == title
                   ? BoxShadow(
                       color: Colors.blue.shade100,
                       offset: Offset(0, 3),
@@ -88,8 +89,7 @@ class SelectableListTile extends HookConsumerWidget {
             ),
             Icon(
               Icons.check_circle,
-              color:
-                  defaultSelected.value == title ? Colors.blue : Colors.white,
+              color: defaultSelected == title ? Colors.blue : Colors.white,
             )
           ],
         ),
