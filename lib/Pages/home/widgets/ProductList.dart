@@ -34,7 +34,9 @@ class ProductListView extends HookConsumerWidget {
           final product = productsState.products[index];
           return CustomCard(
             product.name,
-            product.image_urls[0],
+            product.image_urls.isNotEmpty
+                ? product.image_urls[0]
+                : "https://www.w3schools.com/w3css/img_snowtops.jpg",
             product.description,
           );
         },

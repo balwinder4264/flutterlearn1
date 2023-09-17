@@ -1,8 +1,8 @@
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpodlearn1/services/apiService.dart';
 import 'package:riverpodlearn1/constant/constant.dart';
 import 'package:riverpodlearn1/models/product.dart';
+import 'package:riverpodlearn1/services/authService.dart';
 
 final productsNotifierProvider =
     StateNotifierProvider<ProductsNotifier, ProductsState>((ref) {
@@ -24,7 +24,7 @@ class ProductsState {
 
 class ProductsNotifier extends StateNotifier<ProductsState> {
   final ApiService apiService;
-
+  final authService = AuthService();
   ProductsNotifier(this.apiService)
       : super(ProductsState(products: [], hasMore: true, currentPage: 0)) {
     fetchNextPage();
@@ -32,6 +32,8 @@ class ProductsNotifier extends StateNotifier<ProductsState> {
 
   Future<void> fetchNextPage() async {
     if (!state.hasMore) return; // Return if no more pages available
+    final token = await authService.getFirebaseToken();
+
     try {
       final response = await apiService
           .get('${API.products.get}?page=${state.currentPage + 1}');

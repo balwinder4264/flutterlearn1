@@ -12,7 +12,7 @@ class ApiService {
     if (token != null) {
       headers["Authorization"] = "Bearer $token";
     }
-    print('token: $token');
+
     try {
       final response = await http.get(Uri.parse(endpoint), headers: headers);
       if (response.statusCode == 200) {
