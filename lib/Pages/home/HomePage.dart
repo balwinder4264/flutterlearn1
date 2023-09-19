@@ -16,9 +16,7 @@ class MyHomePage extends HookConsumerWidget {
     final selectedIndex = ref.watch(tabIndexProvider).selectedIndexProvider;
 
     useEffect(() {
-       print("useftc ${selectedIndex}");
       if (selectedIndex == 0) {
-        print("useftc inside ${selectedIndex}");
         ref.read(productsNotifierProvider.notifier).fetchNextPage();
       }
     }, [selectedIndex]);

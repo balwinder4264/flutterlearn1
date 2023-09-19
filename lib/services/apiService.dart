@@ -32,9 +32,8 @@ class ApiService {
     if (token != null) {
       headers["Authorization"] = "Bearer $token";
     }
-      print('token: $token');
+
     try {
-       
       final response = await http.post(
         Uri.parse(endpoint),
         headers: headers,

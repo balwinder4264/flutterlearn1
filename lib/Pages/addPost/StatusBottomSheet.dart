@@ -16,6 +16,8 @@ class StatusBottomSheet extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final ValueNotifier<String> selectedItemNotifier =
+        ValueNotifier(defaultSelected);
     return Container(
       padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 1.0),
       decoration: BoxDecoration(
@@ -36,13 +38,22 @@ class StatusBottomSheet extends HookConsumerWidget {
           onTap: () {
             showModalBottomSheet(
               context: context,
-              builder: (context) => ListView.builder(
-                itemCount: elementList.length,
-                itemBuilder: (context, index) {
-                  return SelectableListTile(
-                      title: elementList[index],
-                      defaultSelected: defaultSelected,
-                      onPressed: onPressed);
+              builder: (context) => ValueListenableBuilder<String>(
+                valueListenable: selectedItemNotifier,
+                builder: (context, selectedItem, _) {
+                  return ListView.builder(
+                    itemCount: elementList.length,
+                    itemBuilder: (context, index) {
+                      return SelectableListTile(
+                        title: elementList[index],
+                        defaultSelected: selectedItemNotifier.value,
+                        onPressed: (selectedValue) {
+                          selectedItemNotifier.value = selectedValue;
+                          onPressed!(selectedValue);
+                        },
+                      );
+                    },
+                  );
                 },
               ),
             );
