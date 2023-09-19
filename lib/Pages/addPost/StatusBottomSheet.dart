@@ -1,22 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpodlearn1/constant/constant.dart';
+
 import 'package:riverpodlearn1/widgets/SelectableListTile.dart';
 
-class SelectionNotifier extends StateNotifier<String> {
-  SelectionNotifier() : super('');
+class SelectionState {
+  final String name;
 
-  void select(String value) {
-    state = value;
+  SelectionState(this.name);
+}
+
+class SelectionNotifier extends StateNotifier<SelectionState> {
+  SelectionNotifier() : super(SelectionState(''));
+
+  void select(String newValue) {
+    state = SelectionState(newValue);
   }
 }
 
-final selectionProvider = StateNotifierProvider<SelectionNotifier, String>(
-    (ref) => SelectionNotifier());
+final selectionProvider =
+    StateNotifierProvider<SelectionNotifier, SelectionState>(
+        (ref) => SelectionNotifier());
 
 class StatusBottomSheet extends HookConsumerWidget {
-  StatusBottomSheet();
+  List<String> elementList;
+
+  StatusBottomSheet({@required this.elementList = const []});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -33,7 +42,7 @@ class StatusBottomSheet extends HookConsumerWidget {
         iconColor: Color(0xFF4338CA),
         child: ListTile(
           title: Text(
-            defaultSelected, // Convert enum value to string for display
+            defaultSelected.name, // Convert enum value to string for display
             textScaleFactor: 1,
           ),
           trailing: Icon(Icons.arrow_drop_down),
@@ -41,10 +50,10 @@ class StatusBottomSheet extends HookConsumerWidget {
             showModalBottomSheet(
               context: context,
               builder: (context) => ListView.builder(
-                itemCount: productStatuses.length,
+                itemCount: elementList.length,
                 itemBuilder: (context, index) {
                   return SelectableListTile(
-                    title: productStatuses[index],
+                    title: elementList[index],
                   );
                 },
               ),

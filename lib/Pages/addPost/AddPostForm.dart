@@ -8,6 +8,7 @@ import 'package:riverpodlearn1/provider/product/addProductProvider.dart';
 import 'package:riverpodlearn1/widgets/customTextFiled.dart';
 import 'package:riverpodlearn1/widgets/custombutton.dart';
 import 'package:riverpodlearn1/constant/constant.dart';
+import 'package:riverpodlearn1/constant/constant.dart';
 
 class AddPostForm extends HookConsumerWidget {
   final _formKey = GlobalKey<FormState>();
@@ -102,7 +103,7 @@ class AddPostForm extends HookConsumerWidget {
                       },
                     ),
                     const SizedBox(height: 20),
-                    StatusBottomSheet(),
+                    StatusBottomSheet(elementList: productStatuses),
                     const SizedBox(height: 20),
                     authState.errorMessage.length > 1
                         ? Text(

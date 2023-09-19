@@ -9,9 +9,8 @@ class API {
 class _ProductsEndpoints {
   final String base;
   _ProductsEndpoints({required this.base});
-  String get get => '$base/public/products'; 
-  String get add => '$base/myProducts'; 
+  String get get => '$base/public/products';
+  String get add => '$base/myProducts';
 }
-
 
 final productStatuses = ['active', 'inactive'];
