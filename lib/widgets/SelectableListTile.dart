@@ -5,17 +5,17 @@ import 'package:riverpodlearn1/Pages/addPost/StatusBottomSheet.dart';
 
 class SelectableListTile extends HookConsumerWidget {
   final String title;
+  final String defaultSelected;
   final String? description;
   final String? imgUrl;
-  final String? currentSelected;
   final Function(String)? onPressed;
   final double height;
 
   SelectableListTile({
     required this.title,
+    this.defaultSelected = '',
     this.description,
     this.imgUrl,
-    this.currentSelected,
     this.onPressed,
     this.height = 85,
     Key? key,
@@ -23,10 +23,9 @@ class SelectableListTile extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final defaultSelected = ref.watch(selectionProvider);
     return GestureDetector(
       onTap: () {
-        ref.read(selectionProvider.notifier).select(title);
+        onPressed!(title);
         Navigator.pop(context);
       },
       child: AnimatedContainer(

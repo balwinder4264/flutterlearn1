@@ -103,7 +103,11 @@ class AddPostForm extends HookConsumerWidget {
                       },
                     ),
                     const SizedBox(height: 20),
-                    StatusBottomSheet(elementList: productStatuses),
+                    StatusBottomSheet(
+                      elementList: productStatuses,
+                      defaultSelected: defaultSelected.value,
+                      onPressed: (data) => {defaultSelected.value = data},
+                    ),
                     const SizedBox(height: 20),
                     authState.errorMessage.length > 1
                         ? Text(

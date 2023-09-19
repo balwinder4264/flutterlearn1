@@ -4,33 +4,18 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:riverpodlearn1/widgets/SelectableListTile.dart';
 
-class SelectionState {
-  final String name;
-
-  SelectionState(this.name);
-}
-
-class SelectionNotifier extends StateNotifier<SelectionState> {
-  SelectionNotifier() : super(SelectionState(''));
-
-  void select(String newValue) {
-    state = SelectionState(newValue);
-  }
-}
-
-final selectionProvider =
-    StateNotifierProvider<SelectionNotifier, SelectionState>(
-        (ref) => SelectionNotifier());
-
 class StatusBottomSheet extends HookConsumerWidget {
   List<String> elementList;
+  final String defaultSelected;
+  final Function(String)? onPressed;
 
-  StatusBottomSheet({@required this.elementList = const []});
+  StatusBottomSheet(
+      {@required this.elementList = const [],
+      @required this.defaultSelected = '',
+      this.onPressed});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final defaultSelected = ref.watch(selectionProvider);
-
     return Container(
       padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 1.0),
       decoration: BoxDecoration(
@@ -42,7 +27,9 @@ class StatusBottomSheet extends HookConsumerWidget {
         iconColor: Color(0xFF4338CA),
         child: ListTile(
           title: Text(
-            defaultSelected.name, // Convert enum value to string for display
+            defaultSelected.isNotEmpty
+                ? defaultSelected
+                : elementList[0], // Convert enum value to string for display
             textScaleFactor: 1,
           ),
           trailing: Icon(Icons.arrow_drop_down),
@@ -53,8 +40,9 @@ class StatusBottomSheet extends HookConsumerWidget {
                 itemCount: elementList.length,
                 itemBuilder: (context, index) {
                   return SelectableListTile(
-                    title: elementList[index],
-                  );
+                      title: elementList[index],
+                      defaultSelected: defaultSelected,
+                      onPressed: onPressed);
                 },
               ),
             );
