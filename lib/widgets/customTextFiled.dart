@@ -9,13 +9,14 @@ class CustomTextField extends StatelessWidget {
   final int? maxLines;
   final TextInputType keyboardType;
 
-  const CustomTextField({super.key, 
+  const CustomTextField({
+    super.key,
     required this.hintText,
     required this.controller,
     this.icon,
     this.obscureText = false,
     this.validator,
-    this.maxLines=1,
+    this.maxLines = 1,
     this.keyboardType = TextInputType.text,
   });
 
@@ -62,7 +63,7 @@ class CustomTextField extends StatelessWidget {
               fillColor: accentColor,
               hintStyle: TextStyle(color: Colors.grey.withOpacity(.75)),
               contentPadding:
-                  const EdgeInsets.symmetric(vertical: 0.0, horizontal: 20.0),
+                  const EdgeInsets.symmetric(vertical: 14.0, horizontal: 20.0),
               border: const OutlineInputBorder(
                 borderSide: BorderSide(color: primaryColor, width: 1.0),
                 borderRadius: BorderRadius.all(Radius.circular(10.0)),
