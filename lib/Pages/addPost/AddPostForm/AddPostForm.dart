@@ -8,7 +8,6 @@ import 'package:riverpodlearn1/provider/product/addProductProvider.dart';
 import 'package:riverpodlearn1/widgets/customTextFiled.dart';
 import 'package:riverpodlearn1/widgets/custombutton.dart';
 import 'package:riverpodlearn1/constant/constant.dart';
-import 'package:riverpodlearn1/constant/constant.dart';
 
 class AddPostForm extends HookConsumerWidget {
   final _formKey = GlobalKey<FormState>();
@@ -31,9 +30,11 @@ class AddPostForm extends HookConsumerWidget {
         name: nameController.text,
         description: descriptionController.text,
         price: double.parse(priceController.text),
-        status: 'Active', // Make sure to handle potential parsing errors
+        status: defaultSelected
+            .value, // Make sure to handle potential parsing errors
       );
-      addProductNotifier.addProduct(newProduct);
+      print("newProduct==${newProduct.status}");
+      // addProductNotifier.addProduct(newProduct);
     }
 
     statusBottomSheetSelecte(data) {
@@ -95,6 +96,8 @@ class AddPostForm extends HookConsumerWidget {
                     CustomTextField(
                       controller: priceController,
                       hintText: 'Price',
+                      keyboardType:
+                          TextInputType.numberWithOptions(decimal: true),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Please enter a price';
