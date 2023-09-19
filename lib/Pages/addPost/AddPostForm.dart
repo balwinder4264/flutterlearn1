@@ -105,7 +105,8 @@ class AddPostForm extends HookConsumerWidget {
                     const SizedBox(height: 20),
                     StatusBottomSheet(
                       elementList: productStatuses,
-                      defaultSelected: defaultSelected.value,
+                      defaultValue: productStatuses[0],
+                      currentSelected: defaultSelected.value,
                       onPressed: (data) => {defaultSelected.value = data},
                     ),
                     const SizedBox(height: 20),
