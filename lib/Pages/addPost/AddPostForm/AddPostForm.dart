@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpodlearn1/Pages/addPost/StatusBottomSheet.dart';
+import 'package:riverpodlearn1/Pages/addPost/AddPostForm/StatusBottomSheet.dart';
 import 'package:riverpodlearn1/models/product.dart';
 import 'package:riverpodlearn1/provider/auth.dart';
 import 'package:riverpodlearn1/provider/product/addProductProvider.dart';
