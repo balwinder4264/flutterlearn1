@@ -1,6 +1,11 @@
 PODS:
   - audio_session (0.0.1):
     - Flutter
+  - BSGridCollectionViewLayout (1.2.5)
+  - BSImagePicker (2.10.3):
+    - BSGridCollectionViewLayout (= 1.2.5)
+    - BSImageView (= 1.0.3)
+  - BSImageView (1.0.3)
   - Firebase/Auth (10.12.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 10.12.0)
@@ -45,11 +50,19 @@ PODS:
   - GTMSessionFetcher/Core (3.1.1)
   - just_audio (0.0.1):
     - Flutter
+  - multiple_images_picker (1.0.00):
+    - BSImagePicker (~> 2.10.3)
+    - Flutter
   - path_provider_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - photo_manager (2.0.0):
     - Flutter
     - FlutterMacOS
   - PromisesObjC (2.3.1)
   - spotify_sdk (0.0.1):
+    - Flutter
+  - video_player_avfoundation (0.0.1):
     - Flutter
 
 DEPENDENCIES:
@@ -58,11 +71,17 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
   - just_audio (from `.symlinks/plugins/just_audio/ios`)
+  - multiple_images_picker (from `.symlinks/plugins/multiple_images_picker/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
+  - photo_manager (from `.symlinks/plugins/photo_manager/ios`)
   - spotify_sdk (from `.symlinks/plugins/spotify_sdk/ios`)
+  - video_player_avfoundation (from `.symlinks/plugins/video_player_avfoundation/ios`)
 
 SPEC REPOS:
   trunk:
+    - BSGridCollectionViewLayout
+    - BSImagePicker
+    - BSImageView
     - Firebase
     - FirebaseAppCheckInterop
     - FirebaseAuth
@@ -83,13 +102,22 @@ EXTERNAL SOURCES:
     :path: Flutter
   just_audio:
     :path: ".symlinks/plugins/just_audio/ios"
+  multiple_images_picker:
+    :path: ".symlinks/plugins/multiple_images_picker/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
+  photo_manager:
+    :path: ".symlinks/plugins/photo_manager/ios"
   spotify_sdk:
     :path: ".symlinks/plugins/spotify_sdk/ios"
+  video_player_avfoundation:
+    :path: ".symlinks/plugins/video_player_avfoundation/ios"
 
 SPEC CHECKSUMS:
   audio_session: 4f3e461722055d21515cf3261b64c973c062f345
+  BSGridCollectionViewLayout: 333dcb457a5a3bdd9212607ab5756553dcfe06cb
+  BSImagePicker: 07404254f2fcdaf5a2eb403c0f8c337267ce8738
+  BSImageView: a149459433a2687157d034c78e059d30ac7f2544
   Firebase: 07150e75d142fb9399f6777fa56a187b17f833a0
   firebase_auth: 097a2440d40bed75f4dfe4cb91b4d98349509b47
   firebase_core: 4a3246a02f828a01c74a2c26427037786d90f17f
@@ -101,9 +129,12 @@ SPEC CHECKSUMS:
   GoogleUtilities: 13e2c67ede716b8741c7989e26893d151b2b2084
   GTMSessionFetcher: e8647203b65cee28c5f73d0f473d096653945e72
   just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
+  multiple_images_picker: c57bdc05801e244c110040889e84851a56e140fd
   path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
+  photo_manager: 4f6810b7dfc4feb03b461ac1a70dacf91fba7604
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   spotify_sdk: 63cc13896c9ff93c4d023e03bb4b9b516602f355
+  video_player_avfoundation: 81e49bb3d9fb63dccf9fa0f6d877dc3ddbeac126
 
 PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
 

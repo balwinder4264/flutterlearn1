@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:multiple_images_picker/multiple_images_picker.dart';
+import 'package:riverpodlearn1/Pages/addPost/AddPostForm/MultipleImagePickerWidget.dart';
 import 'package:riverpodlearn1/Pages/addPost/AddPostForm/StatusBottomSheet.dart';
 import 'package:riverpodlearn1/models/product.dart';
 import 'package:riverpodlearn1/provider/auth.dart';
@@ -23,7 +25,7 @@ class AddPostForm extends HookConsumerWidget {
     final authState = ref.watch(authNotifierProvider);
     final addProductState = ref.watch(addProductnProvider);
     final addProductNotifier = ref.read(addProductnProvider.notifier);
-
+    final imagesNotifier = useState<List<Asset>>([]);
     final defaultSelected = useState(productStatuses[0]);
     addProduct() {
       final newProduct = Product(
@@ -119,6 +121,10 @@ class AddPostForm extends HookConsumerWidget {
                             style: const TextStyle(color: Colors.red),
                           )
                         : const SizedBox.shrink(),
+                    Container(
+                      height: 500, // Adjust this value as necessary
+                      child: MultipleImagePickerWidget(),
+                    ),
                     CustomButton(
                       buttonText: 'Submit',
                       onPressed: () {

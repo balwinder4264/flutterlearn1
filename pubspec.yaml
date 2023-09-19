@@ -44,6 +44,8 @@ dependencies:
   spotify_sdk: ^2.3.1
   http: ^0.13.6
   json_annotation: ^4.8.1
+  multiple_images_picker: ^1.0.1
+  wechat_assets_picker: ^8.6.3
 
 dev_dependencies:
   flutter_test:
