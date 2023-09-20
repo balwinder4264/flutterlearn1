@@ -17,9 +17,9 @@ class LoadingWidget extends HookWidget {
           animation: controller,
           builder: (BuildContext context, Widget? child) {
             return CircularProgressIndicator(
-              value: controller.value,
+              // value: controller.value,
               backgroundColor: Colors.white,
-              valueColor: const AlwaysStoppedAnimation<Color>(Colors.red),
+              valueColor: const AlwaysStoppedAnimation<Color>(Colors.blue),
               strokeWidth: 10,
             );
           },

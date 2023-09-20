@@ -46,6 +46,7 @@ dependencies:
   json_annotation: ^4.8.1
   multiple_images_picker: ^1.0.1
   wechat_assets_picker: ^8.6.3
+  firebase_storage: ^11.2.7
 
 dev_dependencies:
   flutter_test:

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -7,6 +9,7 @@ import 'package:riverpodlearn1/Pages/addPost/AddPostForm/StatusBottomSheet.dart'
 import 'package:riverpodlearn1/models/product.dart';
 import 'package:riverpodlearn1/provider/auth.dart';
 import 'package:riverpodlearn1/provider/product/addProductProvider.dart';
+import 'package:riverpodlearn1/widgets/LoadingWidget.dart';
 import 'package:riverpodlearn1/widgets/customTextFiled.dart';
 import 'package:riverpodlearn1/widgets/custombutton.dart';
 import 'package:riverpodlearn1/constant/constant.dart';
@@ -29,16 +32,21 @@ class AddPostForm extends HookConsumerWidget {
     final imagesNotifier = useState<List<Asset>>([]);
     final defaultSelected = useState(productStatuses[0]);
     final images = useState<List<AssetEntity>>([]);
-    addProduct() {
+    addProduct() async {
       final newProduct = Product(
         name: nameController.text,
         description: descriptionController.text,
         price: double.parse(priceController.text),
-        status: defaultSelected
-            .value, // Make sure to handle potential parsing errors
+        status: defaultSelected.value,
+
+        // Make sure to handle potential parsing errors
       );
-      print("newProduct==${newProduct.status}");
-      // addProductNotifier.addProduct(newProduct);
+      await addProductNotifier.addProduct(newProduct, images.value);
+      nameController.clear();
+      descriptionController.clear();
+      priceController.clear();
+      defaultSelected.value = productStatuses[0];
+      images.value = [];
     }
 
     statusBottomSheetSelecte(data) {
@@ -124,17 +132,20 @@ class AddPostForm extends HookConsumerWidget {
                           )
                         : const SizedBox.shrink(),
                     Container(
-                      height: 120, // Adjust this value as necessary
+                      height: 120,
+                      // Adjust this value as necessary
                       child: MultipleImagePickerWidget(assets: images),
                     ),
-                    CustomButton(
-                      buttonText: 'Submit',
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          addProduct();
-                        }
-                      },
-                    ),
+                    !addProductState.isLoading
+                        ? CustomButton(
+                            buttonText: 'Submit',
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                addProduct();
+                              }
+                            },
+                          )
+                        : LoadingWidget(),
                   ],
                 ),
               ),
