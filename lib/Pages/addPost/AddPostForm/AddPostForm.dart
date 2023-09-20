@@ -124,7 +124,7 @@ class AddPostForm extends HookConsumerWidget {
                           )
                         : const SizedBox.shrink(),
                     Container(
-                      height: 500, // Adjust this value as necessary
+                      height: 120, // Adjust this value as necessary
                       child: MultipleImagePickerWidget(assets: images),
                     ),
                     CustomButton(

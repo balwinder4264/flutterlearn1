@@ -17,6 +17,10 @@ class MultipleImagePickerWidget extends HookConsumerWidget {
           onPressed: () async {
             final List<AssetEntity>? result = await AssetPicker.pickAssets(
               context,
+              pickerConfig: AssetPickerConfig(
+                maxAssets: 5,
+                requestType: RequestType.image,
+              ),
               // maxAssets: 5,
               // requestType: RequestType.image, // Uncomment if you want to pick only images.
             );
