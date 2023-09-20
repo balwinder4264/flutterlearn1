@@ -5,9 +5,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
 class MultipleImagePickerWidget extends HookConsumerWidget {
+  final ValueNotifier<List<AssetEntity>> assets;
+  MultipleImagePickerWidget({required this.assets});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final assets = useState<List<AssetEntity>>([]);
+    // final assets = useState<List<AssetEntity>>([]);
 
     return Column(
       children: [
@@ -36,7 +38,13 @@ class MultipleImagePickerWidget extends HookConsumerWidget {
               crossAxisSpacing: 4.0, // Adjust the spacing as needed
             ),
             itemBuilder: (context, index) {
-              return AssetThumbnail(asset: assets.value[index]);
+              return AssetThumbnail(
+                asset: assets.value[index],
+                onRemove: () {
+                  assets.value = List.from(assets.value)
+                    ..removeAt(index); // Remove the asset at the current index
+                },
+              );
             },
           ),
         ),

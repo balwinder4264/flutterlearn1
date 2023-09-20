@@ -10,6 +10,7 @@ import 'package:riverpodlearn1/provider/product/addProductProvider.dart';
 import 'package:riverpodlearn1/widgets/customTextFiled.dart';
 import 'package:riverpodlearn1/widgets/custombutton.dart';
 import 'package:riverpodlearn1/constant/constant.dart';
+import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
 class AddPostForm extends HookConsumerWidget {
   final _formKey = GlobalKey<FormState>();
@@ -27,6 +28,7 @@ class AddPostForm extends HookConsumerWidget {
     final addProductNotifier = ref.read(addProductnProvider.notifier);
     final imagesNotifier = useState<List<Asset>>([]);
     final defaultSelected = useState(productStatuses[0]);
+    final images = useState<List<AssetEntity>>([]);
     addProduct() {
       final newProduct = Product(
         name: nameController.text,
@@ -123,7 +125,7 @@ class AddPostForm extends HookConsumerWidget {
                         : const SizedBox.shrink(),
                     Container(
                       height: 500, // Adjust this value as necessary
-                      child: MultipleImagePickerWidget(),
+                      child: MultipleImagePickerWidget(assets: images),
                     ),
                     CustomButton(
                       buttonText: 'Submit',
