@@ -29,7 +29,7 @@ class MultipleImagePickerWidget extends HookConsumerWidget {
               assets.value = result;
             }
           },
-          child: Text('Pick Images'),
+          child: Icon(Icons.camera_alt, color: Colors.black),
         ),
         // Remove the GridView if you don't want to display the images right away
 
