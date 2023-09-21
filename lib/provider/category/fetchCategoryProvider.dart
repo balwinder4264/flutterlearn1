@@ -1,4 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpodlearn1/models/category.dart';
+import 'package:riverpodlearn1/models/common_response.dart';
 import 'package:riverpodlearn1/services/apiService.dart';
 import 'package:riverpodlearn1/constant/constant.dart';
 import 'package:riverpodlearn1/models/product.dart';
@@ -12,51 +14,30 @@ final categoryProvider =
 });
 
 class CategoryState {
-  final List<Product> category;
-  final bool hasMore;
-  final int currentPage;
+  final List<Category> category;
   final Object? error;
 
-  CategoryState(
-      {required this.category,
-      required this.hasMore,
-      required this.currentPage,
-      this.error});
+  CategoryState({required this.category, this.error});
 }
 
 class CategoryNotifier extends StateNotifier<CategoryState> {
   final ApiService apiService;
   final authService = AuthService();
   CategoryNotifier(this.apiService)
-      : super(CategoryState(category: [], hasMore: true, currentPage: 0)) {
+      : super(CategoryState(
+          category: [],
+        )) {
     // fetchNextPage();
   }
 
-  Future<void> fetchNextPage() async {
-    if (!state.hasMore) return; // Return if no more pages available
+  Future<void> fetchCategories() async {
     try {
-      final response =
-          await apiService.get('${API.products.get}?page=${state.currentPage}');
-      final categoryResponse = ProductResponse.fromJson(response);
-      if (categoryResponse.data.isEmpty) {
-        state = CategoryState(
-            category: state.category,
-            hasMore: false,
-            currentPage: state.currentPage + 1);
-      } else {
-        state = CategoryState(
-            category: state.currentPage < 2
-                ? categoryResponse.data
-                : [...state.category, ...categoryResponse.data ?? []],
-            hasMore: true,
-            currentPage: state.currentPage + 1);
-      }
+      final response = await apiService.get('${API.products.get}');
+      final categoryResponse = CommonResponse.fromJson(response);
+
+      state = CategoryState(category: categoryResponse.data);
     } catch (error) {
-      state = CategoryState(
-          category: state.category,
-          hasMore: state.hasMore,
-          currentPage: state.currentPage,
-          error: error);
+      state = CategoryState(category: state.category, error: error);
       // Handle any error, maybe set 'hasMore' to false or show some error message
     }
   }
