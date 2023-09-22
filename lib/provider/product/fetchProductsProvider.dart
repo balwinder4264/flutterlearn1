@@ -29,7 +29,6 @@ class ProductsNotifier extends StateNotifier<ProductsState> {
   final authService = AuthService();
   ProductsNotifier(this.apiService)
       : super(ProductsState(products: [], hasMore: true, currentPage: 0)) {
-    // fetchNextPage();
   }
 
   Future<void> fetchNextPage() async {

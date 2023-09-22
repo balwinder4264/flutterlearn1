@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpodlearn1/models/category.dart';
 import 'package:riverpodlearn1/models/common_response.dart';
@@ -32,10 +34,14 @@ class CategoryNotifier extends StateNotifier<CategoryState> {
 
   Future<void> fetchCategories() async {
     try {
-      final response = await apiService.get('${API.products.get}');
+      final response = await apiService.get('${API.category.get}');
+
       final categoryResponse = CommonResponse.fromJson(response);
 
-      state = CategoryState(category: categoryResponse.data);
+      List<Category> categoryList = (categoryResponse.data as List)
+          .map((item) => Category.fromJson(item as Map<String, dynamic>))
+          .toList();
+      state = CategoryState(category: categoryList);
     } catch (error) {
       state = CategoryState(category: state.category, error: error);
       // Handle any error, maybe set 'hasMore' to false or show some error message

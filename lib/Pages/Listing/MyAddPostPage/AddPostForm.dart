@@ -1,12 +1,16 @@
 import 'dart:io';
 
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpodlearn1/Pages/Listing/MyAddPostPage/MultipleImagePickerWidget.dart';
 import 'package:riverpodlearn1/Pages/Listing/MyAddPostPage/StatusBottomSheet.dart';
+import 'package:riverpodlearn1/Pages/Listing/MyAddPostPage/categorySelectSheet.dart';
+import 'package:riverpodlearn1/models/category.dart';
 import 'package:riverpodlearn1/models/product.dart';
 import 'package:riverpodlearn1/provider/auth.dart';
+import 'package:riverpodlearn1/provider/category/fetchCategoryProvider.dart';
 import 'package:riverpodlearn1/provider/product/addProductProvider.dart';
 import 'package:riverpodlearn1/widgets/LoadingWidget.dart';
 import 'package:riverpodlearn1/widgets/customTextFiled.dart';
@@ -29,7 +33,10 @@ class AddPostForm extends HookConsumerWidget {
     final addProductState = ref.watch(addProductnProvider);
     final addProductNotifier = ref.read(addProductnProvider.notifier);
     final defaultSelected = useState(productStatuses[0]);
+    final categoryInstance = ref.watch(categoryProvider);
+    final defaultCategory = useState<Category>(categoryInstance.category[0]);
     final images = useState<List<AssetEntity>>([]);
+
     addProduct() async {
       final newProduct = Product(
         name: nameController.text,
@@ -118,9 +125,16 @@ class AddPostForm extends HookConsumerWidget {
                     const SizedBox(height: 20),
                     StatusBottomSheet(
                       elementList: productStatuses,
-                      defaultValue: productStatuses[0],
+                      defaultValue:  productStatuses[0],
                       currentSelected: defaultSelected.value,
                       onPressed: (data) => {defaultSelected.value = data},
+                    ),
+                    const SizedBox(height: 20),
+                    CategorySelectSheet(
+                      elementList: categoryInstance.category,
+                      currentSelected: defaultCategory.value,
+                      defaultValue: defaultCategory.value,
+                      onPressed: (data) => {defaultCategory.value = data},
                     ),
                     const SizedBox(height: 20),
                     authState.errorMessage.length > 1
