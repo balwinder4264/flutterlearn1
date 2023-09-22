@@ -1,11 +1,12 @@
 import 'package:riverpodlearn1/Pages/AuthOrScreen.dart';
-import 'package:riverpodlearn1/Pages/addPost/MyAddPostPage.dart';
+import 'package:riverpodlearn1/Pages/Listing/MyAddPostPage/MyAddPostPage.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpodlearn1/Pages/Listing/MyListingPage/MyListingPage.dart';
 import 'package:riverpodlearn1/services/navigatorService.dart';
 
-class MainAddPostPage extends HookConsumerWidget {
-  const MainAddPostPage({super.key});
+class MainListingPage extends HookConsumerWidget {
+  const MainListingPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,6 +19,9 @@ class MainAddPostPage extends HookConsumerWidget {
             WidgetBuilder builder;
             switch (settings.name) {
               case '/':
+                builder = (BuildContext context) => const MyListingPage();
+                break;
+              case MyAddPostPage.routeName:
                 builder = (BuildContext context) => const MyAddPostPage();
                 break;
               default:

@@ -1,7 +1,7 @@
 import 'package:riverpodlearn1/provider/counter_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpodlearn1/Pages/addPost/AddPostForm/AddPostForm.dart';
+import 'package:riverpodlearn1/Pages/Listing/MyAddPostPage/AddPostForm.dart';
 
 class MyAddPostPage extends HookConsumerWidget {
   static const routeName = '/addPost';

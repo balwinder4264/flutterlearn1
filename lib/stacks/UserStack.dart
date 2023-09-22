@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpodlearn1/Pages/Favorite/index.dart';
-import 'package:riverpodlearn1/Pages/addPost/index.dart';
+import 'package:riverpodlearn1/Pages/Listing/index.dart';
 import 'package:riverpodlearn1/Pages/home/index.dart';
 import 'package:riverpodlearn1/Pages/inbox/index.dart';
 import 'package:riverpodlearn1/Pages/profile/Profile.dart';
@@ -12,7 +12,7 @@ class UserStack extends HookConsumerWidget {
   final List<Widget> _widgetOptions = <Widget>[
     const MainHomePage(),
     const MainFavoritePage(),
-    const MainAddPostPage(),
+    const MainListingPage(),
     const MainInboxPage(),
     const MyProfilepage(),
   ];
