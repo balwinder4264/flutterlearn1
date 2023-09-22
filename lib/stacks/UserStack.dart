@@ -44,8 +44,8 @@ class UserStack extends HookConsumerWidget {
             label: 'Favorite',
           ),
            BottomNavigationBarItem(
-            icon: Icon(Icons.add_circle_outline),
-            label: 'Post',
+            icon: Icon(Icons.list),
+            label: 'Listings',
           ),
            BottomNavigationBarItem(
             icon: Icon(Icons.inbox),
