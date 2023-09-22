@@ -7,7 +7,7 @@ import 'package:riverpodlearn1/constant/constant.dart';
 import 'package:riverpodlearn1/models/product.dart';
 import 'package:riverpodlearn1/models/custom_error.dart';
 import 'package:riverpodlearn1/services/navigatorService.dart';
-import 'package:wechat_assets_picker/wechat_assets_picker.dart';
+// import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
 class AppProductState {
   final bool isLoading;
@@ -27,17 +27,17 @@ class AddProductNotifier extends StateNotifier<AppProductState> {
   Future<void> addProduct(Product product, List images) async {
     state = AppProductState(isLoading: true);
     List<String> imageUrls = [];
-    if (images != null && images.isNotEmpty) {
-      for (AssetEntity asset in images) {
-        File? file = await convertAssetToFile(asset);
-        if (file != null) {
-          String? imageUrl = await uploadImageToFirebase(file);
-          if (imageUrl != null) {
-            imageUrls.add(imageUrl);
-          }
-        }
-      }
-    }
+    // if (images != null && images.isNotEmpty) {
+    //   for (AssetEntity asset in images) {
+    //     File? file = await convertAssetToFile(asset);
+    //     if (file != null) {
+    //       String? imageUrl = await uploadImageToFirebase(file);
+    //       if (imageUrl != null) {
+    //         imageUrls.add(imageUrl);
+    //       }
+    //     }
+    //   }
+    // }
     try {
       final finalProduct = Product(
         name: product.name,
@@ -90,9 +90,9 @@ class AddProductNotifier extends StateNotifier<AppProductState> {
     }
   }
 
-  Future<File?> convertAssetToFile(AssetEntity asset) async {
-    return await asset.file;
-  }
+  // Future<File?> convertAssetToFile(AssetEntity asset) async {
+  //   return await asset.file;
+  // }
 }
 
 final addProductnProvider =

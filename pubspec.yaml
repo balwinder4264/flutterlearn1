@@ -30,7 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_hooks: ^0.18.0
+  flutter_hooks: ^0.20.1
   hooks_riverpod: ^2.3.6
 
 
@@ -42,11 +42,11 @@ dependencies:
   email_validator: ^2.1.17
   just_audio: ^0.9.34
   spotify_sdk: ^2.3.1
-  http: ^0.13.6
+  http: ^1.1.0
   json_annotation: ^4.8.1
-  multiple_images_picker: ^1.0.1
-  wechat_assets_picker: ^8.6.3
+  # wechat_assets_picker: ^8.6.3
   firebase_storage: ^11.2.7
+  wechat_assets_picker: ^8.6.3
 
 dev_dependencies:
   flutter_test:

@@ -43,6 +43,6 @@ class CategoryNotifier extends StateNotifier<CategoryState> {
   }
 
   void reset() {
-    state = CategoryState(category: [], hasMore: true, currentPage: 0);
+    state = CategoryState(category: []);
   }
 }
